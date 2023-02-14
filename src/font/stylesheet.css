@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Reforma-Grotesk-Bold';
+    src: url('ReformaGroteskBold.eot');
+    src: local('Reforma Grotesk Bold'), local('ReformaGroteskBold'),
+        url('ReformaGroteskBold.eot?#iefix') format('embedded-opentype'),
+        url('ReformaGroteskBold.woff2') format('woff2'),
+        url('ReformaGroteskBold.woff') format('woff'),
+        url('ReformaGroteskBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Reforma-Grotesk-Demi';
+    src: url('ReformaGroteskDemi.eot');
+    src: local('Reforma Grotesk Demi'), local('ReformaGroteskDemi'),
+        url('ReformaGroteskDemi.eot?#iefix') format('embedded-opentype'),
+        url('ReformaGroteskDemi.woff2') format('woff2'),
+        url('ReformaGroteskDemi.woff') format('woff'),
+        url('ReformaGroteskDemi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Reforma-Grotesk-Medium';
+    src: url('ReformaGroteskMedium.eot');
+    src: local('Reforma Grotesk Medium'), local('ReformaGroteskMedium'),
+        url('ReformaGroteskMedium.eot?#iefix') format('embedded-opentype'),
+        url('ReformaGroteskMedium.woff2') format('woff2'),
+        url('ReformaGroteskMedium.woff') format('woff'),
+        url('ReformaGroteskMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Reforma-Grotesk-Light';
+    src: url('ReformaGroteskLight.eot');
+    src: local('Reforma Grotesk Light'), local('ReformaGroteskLight'),
+        url('ReformaGroteskLight.eot?#iefix') format('embedded-opentype'),
+        url('ReformaGroteskLight.woff2') format('woff2'),
+        url('ReformaGroteskLight.woff') format('woff'),
+        url('ReformaGroteskLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+

@@ -1,0 +1,235 @@
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 20px;
+  border: 2px solid #00d7c9;
+  border-radius: 10px;
+  background: rgb(0, 0, 0, 0.7);
+  color: white;
+}
+
+.form {
+  margin: 40px auto;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.cars {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 10px; */
+  /* max-width: 500px; */
+  width: 100%;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.cars label {
+  color: #DB3138;
+  font-family: 'Reforma-Grotesk-Bold';
+  font-size: 30px;
+  letter-spacing: 0.05em;
+}
+
+.cars select {
+  background: transparent;
+  color: aquamarine;
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.models {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 10px; */
+  /* max-width: 500px; */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.models select {
+  margin: 0;
+  background: transparent;
+  color: aquamarine;
+  border: 1px solid #DB3138;
+  font-family: "Reforma-Grotesk-Medium";
+  border-radius: 5px;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.models label {
+  color: #DB3138;
+  font-family: "Reforma-Grotesk-Bold";
+  letter-spacing: 0.05em;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.models select:disabled {
+  display: none;
+}
+
+.models select {
+  background: transparent;
+  color: aquamarine;
+  border: 1px solid #DB3138;
+  width: 150px;
+}
+
+.works {
+  margin-bottom: 20px;
+}
+
+.works p {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Reforma-Grotesk-Demi";
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #DB3138;
+}
+
+.input_items {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.label_work {
+  color: aquamarine;
+  font-family: "Reforma-Grotesk-Medium";
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 16px;
+}
+
+.button_submit:disabled {
+  opacity: 0.5;
+}
+
+.button_submit {
+  padding: 10px;
+  background-color: rgb(219, 49, 56);
+  font-family: "Reforma-Grotesk-Bold";
+  color: aquamarine;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* answer */
+
+.answer_container {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 40px;
+  padding: 10px;
+  column-gap: 4%;
+}
+
+.answer_block {
+  border: 1px solid #00d7c9;
+  border-radius: 5px;
+  padding: 5px;
+  width: 48%;
+}
+
+.service_name {
+  font-family: 'Reforma-Grotesk-Bold';
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #DB3138;
+  margin-bottom: 5px;
+}
+
+.auto_name {
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #00d7c9;
+}
+
+.model_name {
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #00d7c9;
+  margin-bottom: 10px;
+}
+
+.answer_works_block {
+  font-family: 'Reforma-Grotesk-Medium';
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.answer_works_block li {
+  position: relative;
+  padding-left: 14px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #00d7c9;
+}
+
+.answer_works_block li::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  background-color: #DB3138;
+  border-radius: 50%;
+}
+
+.answer_works_block li span {
+  text-transform: lowercase;
+  font-size: 20px;
+  color: #DB3138;
+}
+
+.total_price_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total_price {
+  display: block;
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.total_price_sum {
+  display: block;
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 26px;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  color: #DB3138;
+}

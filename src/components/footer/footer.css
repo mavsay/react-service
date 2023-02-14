@@ -1,0 +1,29 @@
+.footer_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+  padding: 0 20px;
+  max-width: 800px;
+  height: 60px;
+  font-size: 20px;
+  border: 2px solid aquamarine;
+  border-radius: 10px;
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgb(0, 0, 0, 0.7);
+}
+
+.footer_title, .footer_number, .footer_mail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  padding: 0 20px;
+  border: 1px solid #db3339;
+  border-radius: 5px;
+  color: aquamarine;
+  cursor: default;
+}

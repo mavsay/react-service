@@ -1,0 +1,126 @@
+.header_container {
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+  margin: 10px auto 0;
+  padding: 0 20px;
+  height: 60px;
+  border: 2px solid aquamarine;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background: rgb(0, 0, 0, 0.7);
+}
+
+.header_nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_item {
+  display: flex;
+  width: 90px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  color: aquamarine;
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.header_form {
+  text-align: end;
+}
+
+.header_form input {
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  height: 28px;
+  padding: 0 10px;
+}
+
+.input_search {
+  margin-right: 10px;
+  width: 200px;
+  background: transparent;
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  color: aliceblue;
+}
+
+.input_search:hover::placeholder {
+  opacity: 0.5;
+}
+
+.input_search::placeholder {
+  text-transform: uppercase;
+}
+
+.header_input_submit {
+  background: transparent;
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 14px;
+  color: aquamarine;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.header_burger {
+  display: flex;
+  justify-content: end;
+}
+
+.burger_block {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  width: 28px;
+  height: 28px;
+}
+
+.burger_menu {
+  position: relative;
+  display: block;
+  color: aliceblue;
+  font-size: 0;
+  width: 20px;
+  height: 2px;
+  background-color: aquamarine;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.burger_menu::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: -5px;
+  width: 20px;
+  height: 2px;
+  background-color: aquamarine;
+  border-radius: 1px;
+}
+
+.burger_menu::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  width: 20px;
+  height: 2px;
+  background-color: aquamarine;
+  border-radius: 1px;
+}
+
+.nav_item:hover,.header_input_submit:hover,.burger_block:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
