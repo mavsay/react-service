@@ -10,16 +10,18 @@ const Works = ({worksArr}) => {
           key = {work.id}
           className = "input_items"
         >
-          <input
-            id = {work.id}
-            value = {work.operation}
-            type="checkbox"
-            className = "input_work"
-          />
+
           <label
             htmlFor = {work.id}
             className = "label_work"
           >
+            <input
+              id = {work.id}
+              value = {work.operation}
+              type="checkbox"
+              className = "input_work"
+              name="work"
+            />
             {work.operation}
           </label>
         </div>

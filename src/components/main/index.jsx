@@ -1,136 +1,107 @@
 import React, { useState } from 'react'
-import { cars, works, brandModelService, services } from './data.js';
+import { cars, works, brandModelService } from './data.js';
 
-
-import './main.css';
 import Select from '../ui/select/index.jsx';
 import Works from '../ui/works/index.jsx';
+import Answer from '../ui/answer/index.jsx';
+
+import './main.css';
 
 const Main = () => {
-
-  // const [autoBrands, setAutoBrands] = useState([{ name: 'Model' }]);
+  const [services, setServices] = useState([]);
   const [autoBrands, setAutoBrands] = useState([]);
+  const [buttonDisable , setButtonDisable] = useState(true);
 
-  const autoListener = (auto) => {
-    const carSelected = cars.find(car => car.name === auto);
-    const models = carSelected.models;
-    setAutoBrands([...models.map(item => ({ 'name' : item }))]);
+  const [carInfo, setCarInfo] = useState({
+    brand: '',
+    model: ''
+  });
+  const [isDropped, setDropped] = useState({
+    isAutoDropped: false,
+    isModelDropped: false,
+  });
+
+  const autoListener = (brand) => {
+    toggleSelects('isAutoDropped');
+    if (brand) {
+      const carSelected = cars.find(car => car.name === brand);
+      const models = carSelected.models;
+      setCarInfo({ ...carInfo, brand })
+      setAutoBrands([...models.map(item => ({ 'name' : item }))]);
+    }
   };
 
-  const modelListener = (model) => {};
-
-
-  const answerContainer = document.querySelector('.answer_container');
-
-  const createTeg = (teg, className) => {
-    const element = document.createElement(teg);
-    element.className = className;
-    return element;
+  const modelListener = (model) => {
+    toggleSelects('isModelDropped');
+    if (model) {
+      setCarInfo({ ...carInfo, model });
+      setButtonDisable(false);
+    }
   };
-  
-  const createElement = (teg, className, innerText) => {
-    const element = document.createElement(teg);
-    element.className = className;
-    element.innerText = innerText;
-    return element;
-  };
+
+  const toggleSelects = (name) => {
+    const obj = { ...isDropped };
+    for (const key in isDropped) {
+      if (key === name) obj[name] = !obj[name]
+      else obj[key] = false
+    }
+    setDropped(obj);
+  }
 
   const formListener = (event) => {
     event.preventDefault();
-    answerContainer.innerHTML = '';
 
     const fields = Object.values(event.target)
+    const works = fields
+      .filter(item => item.name === 'work' && item.checked)
+      .reduce((acc, work) => {
+        acc[work.value] = work.value
+        return acc;
+      }, {});
 
-    const workForm = {
-      brand: '',
-      model: '',
-      works: [],
-    }
+    const matchModel = brandModelService.filter(item => (
+      item.name === carInfo.brand && item.model === carInfo.model
+    ));
 
-    workForm.brand = fields[0].value;
-    workForm.model = fields[1].value;
-    const works = fields.slice(2,6);
-    works.forEach(work => {
-      if (work.checked) workForm.works.push(work.value);
+    const services = matchModel.map(item => {
+      const checkedWorks = item.works.filter(work => works[work.operation]);
+      const totalPrice = checkedWorks.reduce((acc, work) => acc += work.price , 0);
+      return { ...item, works: checkedWorks, totalPrice };
     })
 
-    const matchModel = brandModelService.filter(item => {
-      if (item.name === workForm.brand && item.model === workForm.model) return item;
-    });
-
-    matchModel.forEach(element => {
-      const answerBlock = createTeg('div', 'answer_block');
-
-      const serviceName = createElement('h2', 'service_name', 'сервис: '+ element.service);
-      const autoName = createElement('h3', 'auto_name', element.name);
-      const modelName = createElement('h3', 'model_name', element.model);
-
-      const answerWorksBlock = createTeg('ul', 'answer_works_block');
-
-      let totalPriceSum = 0;
-      workForm.works.forEach(item => {
-        const WorkPrice = element.works.find(el => el.operation === item);
-        const spanWorkPrice = createElement('span', '', WorkPrice.price + 'р.');
-        const liWork = createElement('li', '', item + ': ');
-        totalPriceSum += WorkPrice.price;
-        liWork.appendChild(spanWorkPrice);
-        answerWorksBlock.appendChild(liWork);
-      });
-
-      const totalPriceBlock = createTeg('div', 'total_price_block');
-
-      const totalPriceText = createTeg('span', 'total_price');
-      totalPriceText.innerText = 'общая стоимость:';
-      totalPriceBlock.appendChild(totalPriceText);
-
-      const totalPrice = createTeg('span', 'total_price_sum');
-      totalPrice.innerText = totalPriceSum + 'р.';
-      totalPriceBlock.appendChild(totalPrice);
-
-
-      answerBlock.appendChild(serviceName);
-      answerBlock.appendChild(autoName);
-      answerBlock.appendChild(modelName);
-      answerBlock.appendChild(answerWorksBlock);
-      answerBlock.appendChild(totalPriceBlock);
-      answerContainer.appendChild(answerBlock);
-    })
+    setServices(services);
   };
 
   return (
     <div className="main_wrapper">
       <div className="container">
-        <form className="form"
-          onSubmit = {event => formListener(event)}
-        >
-
+        <div className="select_block">
           <Select
             label={"Выберите марку авто"}
             onChange = {autoListener}
-            defaultValue = 'Auto'
+            defaultValue = {'Auto'}
             options = {cars}
+            isDropped={isDropped.isAutoDropped}
           />
 
           <Select
             label={"Выберите модель авто"}
             onChange = {modelListener}
-            defaultValue = 'Model'
+            defaultValue = {'Model'}
             options = {autoBrands}
+            isDropped={isDropped.isModelDropped}
           />
+        </div>
 
-          <Works
-            worksArr = {works}
-          />
+        <form className="form" onSubmit = {e => formListener(e)} >
+          <Works worksArr={works} />
 
           <div className="button_submit_container">
-            <button type="submit" className="button_submit">запросить</button>
+            <button disabled = {buttonDisable} type="submit" className="button_submit">запросить</button>
           </div>
         </form>
 
-        <div className="answer_container">
-
-        </div>
-
+        { services.length > 0 && <Answer services={services} /> }
       </div>
     </div>
   )

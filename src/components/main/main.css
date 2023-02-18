@@ -9,9 +9,19 @@
   color: white;
 }
 
-.form {
-  margin: 40px auto;
+.select_block {
+  margin: 40px auto 0;
   padding: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form {
+  margin: 0 auto 40px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -30,7 +40,7 @@
   text-transform: uppercase;
 }
 
-.cars label {
+.cars_label {
   color: #DB3138;
   font-family: 'Reforma-Grotesk-Bold';
   font-size: 30px;
@@ -71,12 +81,8 @@
   text-transform: uppercase;
 }
 
-.models label {
-  color: #DB3138;
-  font-family: "Reforma-Grotesk-Bold";
-  letter-spacing: 0.05em;
-  font-size: 30px;
-  text-transform: uppercase;
+.select_model:disabled {
+  display: none;
 }
 
 .models select:disabled {
@@ -105,18 +111,22 @@
 }
 
 .input_items {
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   column-gap: 5px;
 }
 
 .label_work {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
   color: aquamarine;
   font-family: "Reforma-Grotesk-Medium";
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 16px;
+  width: 165px;
+  padding: 5px 0;
 }
 
 .button_submit:disabled {
@@ -232,4 +242,79 @@
   text-transform: lowercase;
   letter-spacing: 0.05em;
   color: #DB3138;
+}
+
+
+.select {
+  position: relative;
+  background: transparent;
+  color: aquamarine;
+  /* border: 1px solid #DB3138;
+  border-radius: 5px; */
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  width: 150px;
+  height: 30px;
+  text-transform: uppercase;
+}
+
+.select_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  padding: 0 20px;
+  height: 30px;
+  background: transparent;
+  color: aquamarine;
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  width: 150px;
+  height: 30px;
+  text-transform: uppercase;
+}
+
+.select_body {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 150px;
+  display: none;
+  border: 1px solid #DB3138;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.show {
+  display: block;
+  z-index: 99;
+}
+
+.select_item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 10px;
+  padding: 5px 10px;
+}
+
+.select_header:hover{
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.select_item:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  border: 0px solid;
+  border-radius: 5px;
+  background-color: rgba(55, 52, 52, 0.701);
+}
+
+.select_body__open {
+  display: block;
+  z-index: 99;
 }

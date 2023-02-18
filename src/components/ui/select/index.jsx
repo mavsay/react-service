@@ -1,59 +1,37 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 
-const Select = ({options, defaultValue, onChange, label}) => {
+const Select = ({options, defaultValue, onChange, label, isDropped }) => {
+  const [value, setValue] = useState(defaultValue);
 
-  // const [defValue, setDefValue] = useState(defaultValue);
-  // const [list, setList] = useState(options);
-
-  // const isDefaultVal = (name) => name.toLowerCase() === defaultValue.toLowerCase();
-
-  // useEffect(() => {
-  //   setList([{'name': defaultValue}, ...options])
-  // }, [defaultValue, options]);
-
-  // const handleChange = (value) => {
-  //   setDefValue(value);
-  //   onChange(value);
-  // }
-
-  // console.log(defValue, 'defValue');
+  const handlerValue = (val) => {
+    if (val) setValue(val);
+    onChange(val);
+  }
 
   return (
     <div className="cars">
-      <label htmlFor="cars">{label}</label>
-      <div>
-        {/* <select
-          onChange={event => handleChange(event.target.value)}
-        >
-          {list.map(option =>
-            <option
-              selected={isDefaultVal(option.name)}
-              disabled={isDefaultVal(option.name)}
-              value={option.name}
-              key={option.name}
-            >
-              {option.name}
-            </option>
-          )}
-        </select> */}
-        <select
-          onChange={event => onChange(event.target.value)}
-        >
-          <option
-            value={defaultValue}
-          >
-            {defaultValue}
-          </option>
-          {options.map(option =>
-            <option
-              value={option.name}
-              key={option.name}
-            >
-              {option.name}
-            </option>
-          )}
-        </select>
+      <div className='cars_label'>{label}</div>
+      {options.length > 0
+        && <div className="cars_select_block">
+        <div className="select">
+          <button type='button' className="select_header" onClick={() => handlerValue()}>
+            <span className="select_current cars_select_current">{value}</span>
+            {/* <img className="select_icon" /> */}
+          </button>
+          <div className={`select_body ${isDropped ? 'select_body__open' : ''}`}>
+            {options.map(item => (
+              <div
+                onClick={() => handlerValue(item.name)}
+                className="select_item"
+                key={item.name}
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+    }
     </div>
   )
 }
