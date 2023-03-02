@@ -1,12 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-const Select = ({options, defaultValue, onChange, label, isDropped }) => {
-  const [value, setValue] = useState(defaultValue);
+function useSelect(handler, initialState, options) {
+  const [value, setValue] = useState(initialState);
 
   const handlerValue = (val) => {
     if (val) setValue(val);
-    onChange(val);
+    handler(val);
   }
+
+  useEffect(() => {
+    if (initialState === 'model') {
+      setValue(initialState);
+    }
+
+    return;
+  }, [options[0]?.name]);
+
+  return [ value, handlerValue ];
+}
+
+const Select = ({options, defaultValue, onChange, label, isDropped }) => {
+  const [ value, handlerValue ] = useSelect(onChange, defaultValue, options);
 
   return (
     <div className="cars">

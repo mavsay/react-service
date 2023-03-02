@@ -156,6 +156,21 @@
   column-gap: 4%;
 }
 
+.showNotification {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto 40px;
+  padding: 10px;
+  column-gap: 4%;
+  font-family: 'Reforma-Grotesk-Demi';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #00d7c9;
+}
+
 .answer_block {
   border: 1px solid #00d7c9;
   border-radius: 5px;
@@ -242,6 +257,13 @@
   text-transform: lowercase;
   letter-spacing: 0.05em;
   color: #DB3138;
+}
+
+.black_sheet {
+  color: aquamarine;
+  font-family: "Reforma-Grotesk-Medium";
+  font-size: 20px;
+  letter-spacing: 0.05em;
 }
 
 
